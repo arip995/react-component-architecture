@@ -1,6 +1,7 @@
 import React from 'react';
+const UserAddress = (props) => {
+    console.log(props);
 
-const UserAddress = () => {
     return (
         <div>
             

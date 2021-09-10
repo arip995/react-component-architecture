@@ -98,23 +98,23 @@ const useStyles = makeStyles((theme) => ({
 const Home = () => {
     const history = useHistory();
   //Api call on component mount
-  const [users,setUsers] = useState([]);
-  const [userTodos,setUserTodos] = useState([]);
-  useEffect(() => {
-    axios.get('https://jsonplaceholder.typicode.com/users')
-    .then((response) =>{
-      console.log(response);
-      setUsers(response.data)
-    })
-    .catch((error) =>console.error(error));
+  // const [users,setUsers] = useState([]);
+  // const [userTodos,setUserTodos] = useState([]);
+  // useEffect(() => {
+  //   axios.get('https://jsonplaceholder.typicode.com/users')
+  //   .then((response) =>{
+  //     console.log(response);
+  //     setUsers(response.data)
+  //   })
+  //   .catch((error) =>console.error(error));
 
-    axios.get('https://jsonplaceholder.typicode.com/todos')
-    .then((response) =>{
-      console.log(response);
-      setUserTodos(response.data)
-    })
-    .catch((error) =>console.error(error));
-  },[])
+  //   axios.get('https://jsonplaceholder.typicode.com/todos')
+  //   .then((response) =>{
+  //     console.log(response);
+  //     setUserTodos(response.data)
+  //   })
+  //   .catch((error) =>console.error(error));
+  // },[])
 
   const classes = useStyles();
   const [state, setState] = React.useState({
@@ -147,14 +147,14 @@ const Home = () => {
         ))}
         <Divider />
         {['User Todos'].map((text, index) => (
-          <ListItem button key={text}>
+          <ListItem onClick={() =>{history.push('/userTodos')}} button key={text}>
             <ListItemIcon><ListAltOutlinedIcon /></ListItemIcon>
             <ListItemText primary={text} />
           </ListItem>
         ))}
         <Divider />
         {['User Address'].map((text, index) => (
-          <ListItem button key={text}>
+          <ListItem onClick={() =>{history.push('/userAddress')}} button key={text}>
             <ListItemIcon><HomeOutlinedIcon /></ListItemIcon>
             <ListItemText primary={text} />
           </ListItem>

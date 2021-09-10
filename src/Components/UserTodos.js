@@ -1,6 +1,8 @@
 import React from 'react';
 
-const UserTodos = () => {
+const UserTodos = (props) => {
+    console.log(props);
+
     return (
         <div>
             

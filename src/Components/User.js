@@ -4,6 +4,7 @@ import { useHistory } from 'react-router-dom';
 
 const User = (props) => {
     const history = useHistory();
+    console.log(props);
     return (
         <div>
             
