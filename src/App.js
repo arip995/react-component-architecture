@@ -1,4 +1,5 @@
 import React from 'react';
+import { useState,useEffect } from 'react';
 import { alpha, makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -14,6 +15,8 @@ import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
 import HomeOutlinedIcon from '@material-ui/icons/HomeOutlined';
 import ListAltOutlinedIcon from '@material-ui/icons/ListAltOutlined';
+import AccountCircleIcon from '@material-ui/icons/AccountCircle';
+const axios = require('axios');
 
 const useStyles = makeStyles((theme) => ({
   list: {
@@ -88,7 +91,26 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function App() {
+const App = () => {
+  //Api call on component mount
+  const [users,setUsers] = useState([]);
+  const [userTodos,setUserTodos] = useState([]);
+  useEffect(() => {
+    axios.get('https://jsonplaceholder.typicode.com/users')
+    .then((response) =>{
+      console.log(response);
+      setUsers(response.data)
+    })
+    .catch((error) =>console.error(error));
+
+    axios.get('https://jsonplaceholder.typicode.com/todos')
+    .then((response) =>{
+      console.log(response);
+      setUserTodos(response.data)
+    })
+    .catch((error) =>console.error(error));
+  },[])
+
   const classes = useStyles();
   const [state, setState] = React.useState({
     top: false,
@@ -107,22 +129,32 @@ function App() {
 
   const list = (anchor) => (
     <div
-      className={(classes.list, {
-        [classes.fullList]: anchor === 'top' || anchor === 'bottom',
-      })}
       role="presentation"
       onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List>
-        {['User Address', 'User Todos'].map((text, index) => (
+        {['User'].map((text, index) => (
           <ListItem button key={text}>
-            <ListItemIcon>{index % 2 === 0 ? <HomeOutlinedIcon /> : <ListAltOutlinedIcon />}</ListItemIcon>
+            <ListItemIcon><AccountCircleIcon/></ListItemIcon>
+            <ListItemText primary={text} />
+          </ListItem>
+        ))}
+        <Divider />
+        {['User Todos'].map((text, index) => (
+          <ListItem button key={text}>
+            <ListItemIcon><ListAltOutlinedIcon /></ListItemIcon>
+            <ListItemText primary={text} />
+          </ListItem>
+        ))}
+        <Divider />
+        {['User Address'].map((text, index) => (
+          <ListItem button key={text}>
+            <ListItemIcon><HomeOutlinedIcon /></ListItemIcon>
             <ListItemText primary={text} />
           </ListItem>
         ))}
       </List>
-      <Divider />
     </div>
   );
 
@@ -151,7 +183,7 @@ function App() {
             </React.Fragment>
           ))}
           </IconButton>
-          <div style={{marginLeft:"870px"}}>
+          <div style={{marginLeft:"800px"}}>
             <Typography variant="h4" noWrap>
               Welcome to the project
             </Typography>
@@ -164,5 +196,5 @@ function App() {
   )
 }
 
-export default App
+export default App;
 
