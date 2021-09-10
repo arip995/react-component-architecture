@@ -2,8 +2,12 @@ import React from 'react';
 import {useState,useEffect } from 'react';
 import { Button, Header, Icon, Modal } from 'semantic-ui-react';
 
-const Modals = () => {
-    const [open, setOpen] = useState(false);
+const Modals = (props) => {
+    const [open, setOpen] = useState(props.isOpen);
+    useEffect(() => {
+        
+    }, [])
+    
     return (
         
         <div>
