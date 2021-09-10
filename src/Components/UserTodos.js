@@ -109,9 +109,9 @@ const UserTodos = (props) => {
                 <Table>
                     <TableHead>
                         <TableRow>
-                            <TableCell style={{fontSize:25,fontFamily:'inherit',fontStyle:'oblique'}}>userId</TableCell>
                             <TableCell style={{fontSize:25,fontFamily:'inherit',fontStyle:'oblique'}}>title</TableCell>
                             <TableCell style={{fontSize:25,fontFamily:'inherit',fontStyle:'oblique'}}>Completed</TableCell>
+                            <TableCell style={{fontSize:25,fontFamily:'inherit',fontStyle:'oblique'}}>Delete</TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>

@@ -14,14 +14,14 @@ const Modals = (props) => {
             <Modal
             closeIcon
             open={open}
+            trigger={<Button>Show Modal</Button>}
             onClose={() => setOpen(false)}
             onOpen={() => setOpen(true)}
             >
-            <Header icon='archive' content='Archive Old Messages' />
+            <Header icon='archive' content='Confirm Delete' />
             <Modal.Content>
                 <p>
-                Your inbox is getting full, would you like us to enable automatic
-                archiving of old messages?
+                    Do you really want to delete this item
                 </p>
             </Modal.Content>
             <Modal.Actions>
