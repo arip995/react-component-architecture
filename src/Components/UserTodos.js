@@ -87,10 +87,44 @@ const useStyles = makeStyles((theme) =>({
   }));
 
 const UserTodos = (props) => {
-    // console.log(props);
 
+    const [user,setUser] = useState([]);
+    const [d,setDelete] = useState(true);
+    
+    const history = useHistory();
+    useEffect(() => {
+        setUser(props.UserTodo);
+        console.log(props);
+    }, []);
+    const handleDelete = (id) =>{
+        setUser(user.filter(item=>item.id !==id));
+      };
+      const totalDelete = () =>{
+        setDelete(false);
+        setUser(user.filter(item=>item.id ===100));
+      };
     return (
         <div>
+            
+                <Table>
+                    <TableHead>
+                        <TableRow>
+                            <TableCell style={{fontSize:25,fontFamily:'inherit',fontStyle:'oblique'}}>userId</TableCell>
+                            <TableCell style={{fontSize:25,fontFamily:'inherit',fontStyle:'oblique'}}>title</TableCell>
+                            <TableCell style={{fontSize:25,fontFamily:'inherit',fontStyle:'oblique'}}>Completed</TableCell>
+                        </TableRow>
+                    </TableHead>
+                    <TableBody>
+                        {user!==[] && user.map((row,index) => (
+                            <TableRow key={String(row.id)}>
+                                <TableCell >{row.title}</TableCell>
+                                <TableCell >{index%2==0? "true":"false"}</TableCell>
+                                <TableCell onClick={()=>{handleDelete(row.id)}} ><DeleteIcon></DeleteIcon></TableCell>
+                            </TableRow>
+                        ))}
+                    </TableBody>
+
+                </Table>
             
         </div>
     )

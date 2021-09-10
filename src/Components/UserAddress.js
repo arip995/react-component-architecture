@@ -95,7 +95,6 @@ const UserAddress = (props) => {
       const history = useHistory();
       useEffect(() => {
           setUser(props.user);
-          console.log(props);
       }, []);
       const handleDelete = (id) =>{
           setUser(user.filter(item=>item.id !==id));
