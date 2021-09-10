@@ -16,6 +16,8 @@ import Divider from '@material-ui/core/Divider';
 import HomeOutlinedIcon from '@material-ui/icons/HomeOutlined';
 import ListAltOutlinedIcon from '@material-ui/icons/ListAltOutlined';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
+import { useHistory } from 'react-router-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 const axios = require('axios');
 
 const useStyles = makeStyles((theme) => ({
@@ -92,6 +94,10 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const App = () => {
+  const history = useHistory();
+  <Router>
+      <Route exact path='/user' component={User}/>
+   </Router>
   //Api call on component mount
   const [users,setUsers] = useState([]);
   const [userTodos,setUserTodos] = useState([]);
@@ -135,7 +141,7 @@ const App = () => {
     >
       <List>
         {['User'].map((text, index) => (
-          <ListItem button key={text}>
+          <ListItem onClick={() =>{history.push('/user')}} button key={text}>
             <ListItemIcon><AccountCircleIcon/></ListItemIcon>
             <ListItemText primary={text} />
           </ListItem>
@@ -159,6 +165,7 @@ const App = () => {
   );
 
   return (
+    
     <div className={classes.grow}>
       <AppBar position="static">
         <Toolbar>

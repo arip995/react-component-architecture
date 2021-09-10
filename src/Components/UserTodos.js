@@ -8,4 +8,4 @@ const UserTodos = () => {
     )
 }
 
-export default UserTodos
+export default UserTodos;
