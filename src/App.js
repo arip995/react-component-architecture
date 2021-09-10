@@ -27,7 +27,7 @@ const App = () => {
   },[])
   return (
     <Router>
-      <Route exact path='/' ><Modals/></Route>
+      <Route exact path='/' ><User/></Route>
       <Route exact path='/user'><User user={users}/></Route>
       <Route exact path='/Usertodos'><UserTodos UserTodo={userTodos}/></Route>
       <Route exact path='/UserAddress'><UserAddress user={users}/></Route>
