@@ -195,7 +195,7 @@ const Home = () => {
           <div className={classes.grow} />
         </Toolbar>
       </AppBar>
-
+        <h1>Click the side menu to go through the user details</h1>
     </div>
     )
 }
