@@ -2,8 +2,8 @@ import React from 'react';
 import {useState,useEffect } from 'react';
 import { Button, Header, Icon, Modal } from 'semantic-ui-react';
 
-const Modals = (props) => {
-    const [open, setOpen] = useState(props.isOpen);
+const Modals = ({confirmDelete,isOpen}) => {
+    const [open, setOpen] = useState(isOpen);
     useEffect(() => {
         
     }, [])
@@ -25,10 +25,10 @@ const Modals = (props) => {
                 </p>
             </Modal.Content>
             <Modal.Actions>
-                <Button color='red' onClick={() => setOpen(false)}>
+                <Button color='red' onClick={() => {setOpen(false);}}>
                 <Icon name='remove' /> No
                 </Button>
-                <Button color='green' onClick={() => setOpen(false)}>
+                <Button color='green' onClick={() => {setOpen(false);confirmDelete();}}>
                 <Icon name='checkmark' /> Yes
                 </Button>
             </Modal.Actions>

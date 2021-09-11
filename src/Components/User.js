@@ -132,8 +132,8 @@ const User = (props) => {
                                 <TableCell >{row.email}</TableCell>
                                 <TableCell >{row.phone}</TableCell>
                                 <TableCell >{row.website}</TableCell>
-                                <TableCell onClick={()=>{handleDelete(row.id);handleOpen();}} >
-                                  {open && <Modals isOpen={open}/>}
+                                <TableCell onClick={()=>{handleOpen();}} >
+                                  {open && <Modals confirmDelete={()=>{setOpen(false);handleDelete(row.id);console.log(open)}} isOpen={open}/>}
                                   <DeleteIcon></DeleteIcon>
                                 </TableCell>
                             </TableRow>
