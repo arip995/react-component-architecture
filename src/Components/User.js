@@ -171,7 +171,7 @@ const User = (props) => {
 
                 </Table>
                 {open && <Modals confirmDelete={(a)=>{handleUpdate(a)}} isOpen={open}/>}
-                {(!open && (a===1 || a===0)) && <SnackBars isDeteled={a}/>}
+                {/* {(!open && (a===1 || a===0)) && <SnackBars isDeteled={a}/>} */}
         </div>
     )
 }
