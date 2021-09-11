@@ -14,7 +14,7 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import { useHistory } from 'react-router-dom';
-import Snackbar from '@material-ui/core/Snackbar';
+import SnackBar from "./SnackBars"
 import Modals from './Modals';
 
 const useStyles = makeStyles((theme) =>({
