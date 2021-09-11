@@ -89,6 +89,7 @@ const User = (props) => {
     const [user,setUser] = useState([]);
     const [d,setDelete] = useState(true);
     const [open,setOpen] = useState(false);
+    const [userId,setUserId] = useState(1);
     
     const history = useHistory();
     useEffect(() => {
@@ -103,6 +104,21 @@ const User = (props) => {
       };
       const handleOpen = () =>{
         setOpen(true);
+      }
+      const handleClose = () =>{
+        setOpen(false);
+      }
+      const handleId = (id) =>{
+        setUserId(id);
+      }
+      const handleUpdate = (i) =>{
+        if (i===0){
+          handleDelete(userId);
+          handleClose();
+        }
+        else{
+          handleClose();
+        }
       }
     return (
         <div>
@@ -132,8 +148,8 @@ const User = (props) => {
                                 <TableCell >{row.email}</TableCell>
                                 <TableCell >{row.phone}</TableCell>
                                 <TableCell >{row.website}</TableCell>
-                                <TableCell onClick={()=>{handleOpen();}} >
-                                  {open && <Modals confirmDelete={()=>{setOpen(false);handleDelete(row.id);console.log(open)}} isOpen={open}/>}
+                                <TableCell onClick={()=>{handleId(row.id);handleOpen();}} >
+                                  {/* {open && <Modals confirmDelete={()=>{handleDelete(row.id);console.log(open);handleClose();}} isOpen={open}/>} */}
                                   <DeleteIcon></DeleteIcon>
                                 </TableCell>
                             </TableRow>
@@ -141,7 +157,7 @@ const User = (props) => {
                     </TableBody>
 
                 </Table>
-            
+                {open && <Modals confirmDelete={(a)=>{handleUpdate(a)}} isOpen={open}/>}
         </div>
     )
 }

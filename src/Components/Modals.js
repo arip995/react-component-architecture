@@ -15,7 +15,7 @@ const Modals = ({confirmDelete,isOpen}) => {
             closeIcon
             open={open}
             // trigger={<Button>Show Modal</Button>}
-            onClose={() => setOpen(false)}
+            onClose={() => {setOpen(false);confirmDelete(1);}}
             onOpen={() => setOpen(true)}
             >
             <Header icon='archive' content='Confirm Delete' />
@@ -25,10 +25,10 @@ const Modals = ({confirmDelete,isOpen}) => {
                 </p>
             </Modal.Content>
             <Modal.Actions>
-                <Button color='red' onClick={() => {setOpen(false);}}>
+                <Button color='red' onClick={() => {setOpen(false);confirmDelete(1);}}>
                 <Icon name='remove' /> No
                 </Button>
-                <Button color='green' onClick={() => {setOpen(false);confirmDelete();}}>
+                <Button color='green' onClick={() => {setOpen(false);confirmDelete(0);}}>
                 <Icon name='checkmark' /> Yes
                 </Button>
             </Modal.Actions>
