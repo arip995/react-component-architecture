@@ -21,7 +21,7 @@ const Modals = ({confirmDelete,isOpen}) => {
             <Header icon='archive' content='Confirm Delete' />
             <Modal.Content>
                 <p>
-                    Do you really want to delete this item
+                    Do you really want to delete this user
                 </p>
             </Modal.Content>
             <Modal.Actions>

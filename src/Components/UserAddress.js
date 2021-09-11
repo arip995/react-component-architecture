@@ -89,20 +89,36 @@ const UserAddress = (props) => {
 
     
 
-      const [user,setUser] = useState([]);
-      const [d,setDelete] = useState(true);
+  const [user,setUser] = useState([]);
+  const [d,setDelete] = useState(true);
+  const [open,setOpen] = useState(false);
+  const [userId,setUserId] = useState(1);
       
       const history = useHistory();
       useEffect(() => {
           setUser(props.user);
       }, []);
       const handleDelete = (id) =>{
-          setUser(user.filter(item=>item.id !==id));
-        };
-        const totalDelete = () =>{
-          setDelete(false);
-          setUser(user.filter(item=>item.id ===100));
-        };
+        setUser(user.filter(item=>item.id !==id));
+      };
+      const handleOpen = () =>{
+        setOpen(true);
+      }
+      const handleClose = () =>{
+        setOpen(false);
+      }
+      const handleId = (id) =>{
+        setUserId(id);
+      }
+      const handleUpdate = (i) =>{
+        if (i===0){
+          handleDelete(userId);
+          handleClose();
+        }
+        else{
+          handleClose();
+        }
+      }
       return (
           <div>
               
@@ -114,11 +130,7 @@ const UserAddress = (props) => {
                               <TableCell style={{fontSize:25,fontFamily:'inherit',fontStyle:'oblique'}}>Suite</TableCell>
                               <TableCell style={{fontSize:25,fontFamily:'inherit',fontStyle:'oblique'}}>City</TableCell>
                               <TableCell style={{fontSize:25,fontFamily:'inherit',fontStyle:'oblique'}}>Zipcode</TableCell>
-                              {d?
-                              <>
-                              <TableCell onClick={()=>{totalDelete()}} ><DeleteIcon></DeleteIcon></TableCell>
-                              </>:""
-                              }
+                              
                           </TableRow>
                       </TableHead>
                       <TableBody>
@@ -131,13 +143,15 @@ const UserAddress = (props) => {
                                   <TableCell >{row.address.suite}</TableCell>
                                   <TableCell >{row.address.city}</TableCell>
                                   <TableCell >{row.address.zipcode}</TableCell>
-                                  <TableCell onClick={()=>{handleDelete(row.id)}} ><DeleteIcon></DeleteIcon></TableCell>
+                                  <TableCell onClick={()=>{handleId(row.id);handleOpen();}} >
+                                    <DeleteIcon></DeleteIcon>
+                                </TableCell>
                               </TableRow>
                           ))}
                       </TableBody>
   
                   </Table>
-              
+                  {open && <Modals confirmDelete={(a)=>{handleUpdate(a)}} isOpen={open}/>}
           </div>
       )
 }

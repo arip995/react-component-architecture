@@ -98,10 +98,6 @@ const User = (props) => {
     const handleDelete = (id) =>{
         setUser(user.filter(item=>item.id !==id));
       };
-      const totalDelete = () =>{
-        setDelete(false);
-        setUser(user.filter(item=>item.id ===100));
-      };
       const handleOpen = () =>{
         setOpen(true);
       }
@@ -131,11 +127,7 @@ const User = (props) => {
                             <TableCell style={{fontSize:25,fontFamily:'inherit',fontStyle:'oblique'}}>Email</TableCell>
                             <TableCell style={{fontSize:25,fontFamily:'inherit',fontStyle:'oblique'}}>Phone Number</TableCell>
                             <TableCell style={{fontSize:25,fontFamily:'inherit',fontStyle:'oblique'}}>Website</TableCell>
-                            {d?
-                            <>
-                            <TableCell onClick={()=>{totalDelete()}} ><DeleteIcon></DeleteIcon></TableCell>
-                            </>:""
-                            }
+                            
                         </TableRow>
                     </TableHead>
                     <TableBody>
@@ -149,7 +141,6 @@ const User = (props) => {
                                 <TableCell >{row.phone}</TableCell>
                                 <TableCell >{row.website}</TableCell>
                                 <TableCell onClick={()=>{handleId(row.id);handleOpen();}} >
-                                  {/* {open && <Modals confirmDelete={()=>{handleDelete(row.id);console.log(open);handleClose();}} isOpen={open}/>} */}
                                   <DeleteIcon></DeleteIcon>
                                 </TableCell>
                             </TableRow>
