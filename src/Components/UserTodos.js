@@ -88,21 +88,37 @@ const useStyles = makeStyles((theme) =>({
 
 const UserTodos = (props) => {
 
-    const [user,setUser] = useState([]);
-    const [d,setDelete] = useState(true);
+  const [user,setUser] = useState([]);
+  const [d,setDelete] = useState(true);
+  const [open,setOpen] = useState(false);
+  const [userId,setUserId] = useState(1);
     
     const history = useHistory();
     useEffect(() => {
-        setUser(props.UserTodo);
+        setUser(props.user);
         console.log(props);
     }, []);
     const handleDelete = (id) =>{
-        setUser(user.filter(item=>item.id !==id));
-      };
-      const totalDelete = () =>{
-        setDelete(false);
-        setUser(user.filter(item=>item.id ===100));
-      };
+      setUser(user.filter(item=>item.id !==id));
+    };
+    const handleOpen = () =>{
+      setOpen(true);
+    }
+    const handleClose = () =>{
+      setOpen(false);
+    }
+    const handleId = (id) =>{
+      setUserId(id);
+    }
+    const handleUpdate = (i) =>{
+      if (i===0){
+        handleDelete(userId);
+        handleClose();
+      }
+      else{
+        handleClose();
+      }
+    }
     return (
         <div>
             
@@ -119,14 +135,16 @@ const UserTodos = (props) => {
                             <TableRow key={String(row.id)}>
                                 <TableCell >{row.title}</TableCell>
                                 {/* <TableCell >{row.completed}</TableCell> */}
-                                <TableCell >{index%2==0? "true":"false"}</TableCell>
-                                <TableCell onClick={()=>{handleDelete(row.id)}} ><DeleteIcon></DeleteIcon></TableCell>
+                                <TableCell >{index%2===0? "true":"false"}</TableCell>
+                                <TableCell onClick={()=>{handleId(row.id);handleOpen();}} >
+                                  <DeleteIcon></DeleteIcon>
+                                </TableCell>
                             </TableRow>
                         ))}
                     </TableBody>
 
                 </Table>
-            
+                {open && <Modals confirmDelete={(a)=>{handleUpdate(a)}} isOpen={open}/>}
         </div>
     )
 }

@@ -130,7 +130,7 @@ const UserAddress = (props) => {
                               <TableCell style={{fontSize:25,fontFamily:'inherit',fontStyle:'oblique'}}>Suite</TableCell>
                               <TableCell style={{fontSize:25,fontFamily:'inherit',fontStyle:'oblique'}}>City</TableCell>
                               <TableCell style={{fontSize:25,fontFamily:'inherit',fontStyle:'oblique'}}>Zipcode</TableCell>
-                              
+                              <TableCell style={{fontSize:25,fontFamily:'inherit',fontStyle:'oblique'}}>Delete</TableCell>
                           </TableRow>
                       </TableHead>
                       <TableBody>
