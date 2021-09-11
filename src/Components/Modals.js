@@ -6,7 +6,7 @@ import SnackBars from './SnackBars';
 const Modals = ({confirmDelete,isOpen}) => {
     const [open, setOpen] = useState(isOpen);
     const [deleted, setDeleted] = useState(false);
-    const [a,setA] = useState(false);
+    const [a,setA] = useState(true);
     useEffect(() => {
         
     }, [])
@@ -40,9 +40,6 @@ const Modals = ({confirmDelete,isOpen}) => {
                 </Button>
             </Modal.Actions>
             </Modal>
-            {a && 
-                <SnackBars isDeleted = {deleted}/>
-            }
         </div>
         
     )

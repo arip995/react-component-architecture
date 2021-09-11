@@ -19,13 +19,15 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
- const SnackBars = (props) => {
+ const SnackBars = ({isDeleted}) => {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
-  const [success, setSuccess] = useState();
+  const [succeess, setSuccess] = useState();
 
   useEffect(() => {
-    setSuccess(props.isDeleted);
+    setSuccess(isDeleted);
+    console.log(isDeleted);
+    setOpen(true);
   }, [])
 
   const handleClick = () => {
@@ -39,10 +41,10 @@ const useStyles = makeStyles((theme) => ({
 
     setOpen(false);
   };
-
+  console.log(isDeleted)
   return (
     <div >
-      {success &&
+      {succeess &&
         <Snackbar open={open} autoHideDuration={3000} onClose={handleClose}>
         <Alerts onClose={handleClose} severity="success">
           User deleted successfully
@@ -50,13 +52,18 @@ const useStyles = makeStyles((theme) => ({
       </Snackbar>
       }
 
-      {!success &&
+      {!succeess &&
         <Snackbar open={open} autoHideDuration={3000} onClose={handleClose}>
         <Alerts onClose={handleClose} severity="warning">
           User not deleted
         </Alerts>
       </Snackbar>
       }
+      {/* <Snackbar open={open} autoHideDuration={3000} onClose={handleClose}>
+        <Alerts onClose={handleClose} severity="success">
+          User deleted successfully
+        </Alerts>
+      </Snackbar> */}
     </div>
   );
 }

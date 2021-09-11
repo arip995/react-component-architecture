@@ -14,10 +14,23 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import { useHistory } from 'react-router-dom';
-import SnackBar from "./SnackBars"
+import Snackbar from '@material-ui/core/Snackbar';
+import Alert from '@material-ui/lab/Alert';
+import MuiAlert from '@material-ui/lab/Alert';
+import SnackBars from "./SnackBars"
 import Modals from './Modals';
 
+function Alerts(props) {
+  return <MuiAlert elevation={6} variant="filled" {...props} />;
+}
+
 const useStyles = makeStyles((theme) =>({
+  root: {
+    width: '100%',
+    '& > * + *': {
+      marginTop: theme.spacing(2),
+    },
+  },
     table: {
       marginTop:65,
       minWidth: 650
@@ -90,6 +103,7 @@ const User = (props) => {
     const [user,setUser] = useState([]);
     const [openSnackBar,setopenSnackBar] = useState(false);
     const [d,setDelete] = useState(true);
+    const [a,setA] = useState();
     const [open,setOpen] = useState(false);
     const [userId,setUserId] = useState(1);
     
@@ -97,6 +111,10 @@ const User = (props) => {
     useEffect(() => {
         setUser(props.user);
     }, []);
+
+    useEffect(() => {
+      console.log(a);
+    }, [a])
     const handleDelete = (id) =>{
         setUser(user.filter(item=>item.id !==id));
       };
@@ -113,9 +131,11 @@ const User = (props) => {
         if (i===0){
           handleDelete(userId);
           handleClose();
+          setA(i);
         }
-        else{
+        else if(i===1){
           handleClose();
+          setA(i);
         }
       }
     return (
@@ -151,7 +171,7 @@ const User = (props) => {
 
                 </Table>
                 {open && <Modals confirmDelete={(a)=>{handleUpdate(a)}} isOpen={open}/>}
-                {openSnackBar}
+                {(!open && (a===1 || a===0)) && <SnackBars isDeteled={a}/>}
         </div>
     )
 }
