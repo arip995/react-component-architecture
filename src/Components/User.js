@@ -14,6 +14,7 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import { useHistory } from 'react-router-dom';
+import Snackbar from '@material-ui/core/Snackbar';
 import Modals from './Modals';
 
 const useStyles = makeStyles((theme) =>({
@@ -87,6 +88,7 @@ const useStyles = makeStyles((theme) =>({
 
 const User = (props) => {
     const [user,setUser] = useState([]);
+    const [openSnackBar,setopenSnackBar] = useState(false);
     const [d,setDelete] = useState(true);
     const [open,setOpen] = useState(false);
     const [userId,setUserId] = useState(1);
@@ -149,6 +151,7 @@ const User = (props) => {
 
                 </Table>
                 {open && <Modals confirmDelete={(a)=>{handleUpdate(a)}} isOpen={open}/>}
+                {openSnackBar}
         </div>
     )
 }
