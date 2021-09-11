@@ -88,6 +88,7 @@ const useStyles = makeStyles((theme) =>({
 const User = (props) => {
     const [user,setUser] = useState([]);
     const [d,setDelete] = useState(true);
+    const [open,setOpen] = useState(false);
     
     const history = useHistory();
     useEffect(() => {
@@ -100,6 +101,9 @@ const User = (props) => {
         setDelete(false);
         setUser(user.filter(item=>item.id ===100));
       };
+      const handleOpen = () =>{
+        setOpen(true);
+      }
     return (
         <div>
             
@@ -128,7 +132,10 @@ const User = (props) => {
                                 <TableCell >{row.email}</TableCell>
                                 <TableCell >{row.phone}</TableCell>
                                 <TableCell >{row.website}</TableCell>
-                                <TableCell onClick={()=>{handleDelete(row.id)}} ><DeleteIcon></DeleteIcon></TableCell>
+                                <TableCell onClick={()=>{handleDelete(row.id);handleOpen();}} >
+                                  {open && <Modals isOpen={open}/>}
+                                  <DeleteIcon></DeleteIcon>
+                                </TableCell>
                             </TableRow>
                         ))}
                     </TableBody>

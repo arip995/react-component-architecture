@@ -118,6 +118,7 @@ const UserTodos = (props) => {
                         {user!==[] && user.map((row,index) => (
                             <TableRow key={String(row.id)}>
                                 <TableCell >{row.title}</TableCell>
+                                {/* <TableCell >{row.completed}</TableCell> */}
                                 <TableCell >{index%2==0? "true":"false"}</TableCell>
                                 <TableCell onClick={()=>{handleDelete(row.id)}} ><DeleteIcon></DeleteIcon></TableCell>
                             </TableRow>
