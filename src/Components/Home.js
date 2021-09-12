@@ -187,15 +187,15 @@ const Home = () => {
             </React.Fragment>
           ))}
           </IconButton>
-          <div style={{marginLeft:"800px"}}>
+          
             <Typography variant="h4" noWrap>
               Welcome to the project
             </Typography>
-          </div>
+          
           <div className={classes.grow} />
         </Toolbar>
       </AppBar>
-        <h1>Click the side menu to go through the user details</h1>
+        <h1 className={classes.header}>Click the side menu to go through the user details</h1>
     </div>
     )
 }
