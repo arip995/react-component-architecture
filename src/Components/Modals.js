@@ -1,21 +1,12 @@
 import React from 'react';
 import {useState,useEffect } from 'react';
 import { Button, Header, Icon, Modal } from 'semantic-ui-react';
-import SnackBarsSuccess from './SnackBarsSuccess';
-import SnackBarsWarning from './SnackBarsWarning';
 
 const Modals = ({confirmDelete,isOpen}) => {
     const [open, setOpen] = useState(isOpen);
-    const [deleted, setDeleted] = useState(false);
-    const [a,setA] = useState(true);
-    const [b,setB] = useState(5);
     useEffect(() => {
         
     }, [])
-    const Delete = (i) =>{
-        setDeleted(i);
-        setA('ture');
-    }
     
     return (
         
@@ -34,10 +25,10 @@ const Modals = ({confirmDelete,isOpen}) => {
                 </p>
             </Modal.Content>
             <Modal.Actions>
-                <Button color='red' onClick={() => {setOpen(false);confirmDelete(1);Delete(false);setB(1)}}>
+                <Button color='red' onClick={() => {setOpen(false);confirmDelete(1);}}>
                 <Icon name='remove' /> No
                 </Button>
-                <Button color='green' onClick={() => {setOpen(false);confirmDelete(0);Delete(false);setB(0)}}>
+                <Button color='green' onClick={() => {setOpen(false);confirmDelete(0);}}>
                 <Icon name='checkmark' /> Yes
                 </Button>
             </Modal.Actions>
