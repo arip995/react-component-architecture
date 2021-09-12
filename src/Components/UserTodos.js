@@ -95,8 +95,9 @@ const UserTodos = (props) => {
     
     const history = useHistory();
     useEffect(() => {
-        setUser(props.user);
-        console.log(props);
+      const data = JSON.parse(localStorage.getItem('userTodos'));
+      console.log(data);
+        setUser(data);
     }, []);
     const handleDelete = (id) =>{
       setUser(user.filter(item=>item.id !==id));

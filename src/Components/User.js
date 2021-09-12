@@ -109,7 +109,9 @@ const User = (props) => {
     
     const history = useHistory();
     useEffect(() => {
-        setUser(props.user);
+      const data = JSON.parse(localStorage.getItem('user'));
+      console.log(data);
+        setUser(data);
     }, []);
 
     useEffect(() => {

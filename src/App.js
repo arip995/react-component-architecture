@@ -15,12 +15,15 @@ const App = () => {
   useEffect(() => {
     axios.get('https://jsonplaceholder.typicode.com/users')
     .then((response) =>{
-      setUsers(response.data)
+      localStorage.setItem('user',JSON.stringify(response.data))
+      const data = JSON.parse(localStorage.getItem('user'));
+      setUsers(data);
     })
     .catch((error) =>console.error(error));
 
     axios.get('https://jsonplaceholder.typicode.com/todos')
     .then((response) =>{
+      localStorage.setItem('userTodos',JSON.stringify(response.data))
       setUserTodos(response.data)
     })
     .catch((error) =>console.error(error));
