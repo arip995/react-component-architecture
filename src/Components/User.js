@@ -100,7 +100,7 @@ const useStyles = makeStyles((theme) =>({
     
   }));
 
-const User = (props) => {
+const User = () => {
     const [user,setUser] = useState([]);
     const [a,setA] = useState();
     const [open,setOpen] = useState(false);

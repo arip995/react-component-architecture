@@ -32,9 +32,9 @@ const App = () => {
     <Router>
       <Route exact path='/' ><Home /></Route>
       {/* <Route exact path='/' ><Modals /></Route> */}
-      <Route exact path='/user'><User user={users}/></Route>
-      <Route exact path='/Usertodos'><UserTodos user={userTodos}/></Route>
-      <Route exact path='/UserAddress'><UserAddress user={users}/></Route>
+      <Route exact path='/user'><User /></Route>
+      <Route exact path='/Usertodos'><UserTodos /></Route>
+      <Route exact path='/UserAddress'><UserAddress /></Route>
    </Router>
   )
 }

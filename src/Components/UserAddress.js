@@ -87,7 +87,7 @@ const useStyles = makeStyles((theme) =>({
     
   }));
 
-const UserAddress = (props) => {
+const UserAddress = () => {
 
     
 

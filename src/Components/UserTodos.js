@@ -88,7 +88,7 @@ const useStyles = makeStyles((theme) =>({
     
   }));
 
-const UserTodos = (props) => {
+const UserTodos = () => {
 
   const [user,setUser] = useState([]);
   const [a,setA] = useState();
