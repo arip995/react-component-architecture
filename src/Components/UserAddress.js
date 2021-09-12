@@ -12,6 +12,8 @@ import TableBody from "@material-ui/core/TableBody";
 import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
+import SnackBarsSuccess from './SnackBarsSuccess';
+import SnackBarsWarning from './SnackBarsWarning';
 import Paper from "@material-ui/core/Paper";
 import { useHistory } from 'react-router-dom';
 import Modals from './Modals';
@@ -90,7 +92,7 @@ const UserAddress = (props) => {
     
 
   const [user,setUser] = useState([]);
-  const [d,setDelete] = useState(true);
+  const [a,setA] = useState();
   const [open,setOpen] = useState(false);
   const [userId,setUserId] = useState(1);
       
@@ -116,9 +118,11 @@ const UserAddress = (props) => {
         if (i===0){
           handleDelete(userId);
           handleClose();
+          setA(i);
         }
-        else{
+        else if(i===1){
           handleClose();
+          setA(i);
         }
       }
       return (
@@ -154,6 +158,8 @@ const UserAddress = (props) => {
   
                   </Table>
                   {open && <Modals confirmDelete={(a)=>{handleUpdate(a)}} isOpen={open}/>}
+                  {(!open && (a===0)) && <SnackBarsSuccess />}
+                  {(!open && (a===1)) && <SnackBarsWarning />}
           </div>
       )
 }

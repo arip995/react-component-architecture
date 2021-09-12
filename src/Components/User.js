@@ -102,8 +102,6 @@ const useStyles = makeStyles((theme) =>({
 
 const User = (props) => {
     const [user,setUser] = useState([]);
-    const [openSnackBar,setopenSnackBar] = useState(false);
-    const [d,setDelete] = useState(true);
     const [a,setA] = useState();
     const [open,setOpen] = useState(false);
     const [userId,setUserId] = useState(1);
