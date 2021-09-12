@@ -1,5 +1,4 @@
 import React from 'react';
-import { useState,useEffect } from 'react';
 import { alpha, makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -17,9 +16,6 @@ import HomeOutlinedIcon from '@material-ui/icons/HomeOutlined';
 import ListAltOutlinedIcon from '@material-ui/icons/ListAltOutlined';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import { useHistory } from 'react-router-dom';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
-import User from './User';
-const axios = require('axios');
 
 
 const useStyles = makeStyles((theme) => ({
@@ -96,26 +92,7 @@ const useStyles = makeStyles((theme) => ({
   }));
 
 const Home = () => {
-    const history = useHistory();
-  //Api call on component mount
-  // const [users,setUsers] = useState([]);
-  // const [userTodos,setUserTodos] = useState([]);
-  // useEffect(() => {
-  //   axios.get('https://jsonplaceholder.typicode.com/users')
-  //   .then((response) =>{
-  //     console.log(response);
-  //     setUsers(response.data)
-  //   })
-  //   .catch((error) =>console.error(error));
-
-  //   axios.get('https://jsonplaceholder.typicode.com/todos')
-  //   .then((response) =>{
-  //     console.log(response);
-  //     setUserTodos(response.data)
-  //   })
-  //   .catch((error) =>console.error(error));
-  // },[])
-
+  const history = useHistory();
   const classes = useStyles();
   const [state, setState] = React.useState({
     top: false,

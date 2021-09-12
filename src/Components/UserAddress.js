@@ -21,8 +21,7 @@ const UserAddress = () => {
       
       useEffect(() => {
         const data = JSON.parse(localStorage.getItem('user'));
-        console.log(data);
-          setUser(data);
+        setUser(data);
       }, []);
       const handleDelete = (id) =>{
         setUser(user.filter(item=>item.id !==id));
