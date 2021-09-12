@@ -17,7 +17,8 @@ import { useHistory } from 'react-router-dom';
 import Snackbar from '@material-ui/core/Snackbar';
 import Alert from '@material-ui/lab/Alert';
 import MuiAlert from '@material-ui/lab/Alert';
-import SnackBars from "./SnackBars"
+import SnackBarsSuccess from './SnackBarsSuccess';
+import SnackBarsWarning from './SnackBarsWarning';
 import Modals from './Modals';
 
 function Alerts(props) {
@@ -173,7 +174,8 @@ const User = (props) => {
 
                 </Table>
                 {open && <Modals confirmDelete={(a)=>{handleUpdate(a)}} isOpen={open}/>}
-                {/* {(!open && (a===1 || a===0)) && <SnackBars isDeteled={a}/>} */}
+                {(!open && (a===0)) && <SnackBarsSuccess />}
+                {(!open && (a===1)) && <SnackBarsWarning />}
         </div>
     )
 }
